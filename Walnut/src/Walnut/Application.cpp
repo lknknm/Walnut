@@ -14,6 +14,7 @@
 #include <vulkan/vulkan.h>
 #include <glm/glm.hpp>
 #include "ImGui/imnodes.h"
+#include "ImGui/IconsMaterialSymbols.h"
 
 #include <iostream>
 
@@ -487,8 +488,13 @@ namespace Walnut {
 		// Load default font
 		ImFontConfig fontConfig;
 		fontConfig.FontDataOwnedByAtlas = false;
-		ImFont* robotoFont = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoRegular, sizeof(g_RobotoRegular), 20.0f, &fontConfig);
+		ImFont* robotoFont = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoRegular, sizeof(g_RobotoRegular), 16.0f, &fontConfig);
 		io.FontDefault = robotoFont;
+
+		ImFontConfig config;
+		config.MergeMode = true;
+		static const ImWchar icon_ranges[] = { ICON_MIN_MS, ICON_MAX_16_MS, 0 };
+		io.Fonts->AddFontFromFileTTF("ImGui/MaterialIcons-Regular", 16.0f, &config, icon_ranges);
 
 		// Upload Fonts
 		{
