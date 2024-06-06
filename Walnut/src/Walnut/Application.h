@@ -10,6 +10,8 @@
 #include "imgui.h"
 #include "vulkan/vulkan.h"
 
+#include "ImGui/IconsMaterialSymbols.h"
+
 void check_vk_result(VkResult err);
 
 struct GLFWwindow;

@@ -14,7 +14,6 @@
 #include <vulkan/vulkan.h>
 #include <glm/glm.hpp>
 #include "ImGui/imnodes.h"
-#include "ImGui/IconsMaterialSymbols.h"
 
 #include <iostream>
 
