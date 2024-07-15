@@ -1,8 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
-
-#include <spdlog/fmt/fmt.h>
+#include "../spdlog/include/spdlog/fmt/fmt.h"
 
 namespace fmt {
 

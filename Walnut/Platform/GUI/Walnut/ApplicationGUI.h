@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Walnut/Layer.h"
-#include "Walnut/Image.h"
+#include "Image.h"
 
 #include <string>
 #include <vector>
@@ -62,6 +62,8 @@ namespace Walnut {
 		void Close();
 
 		bool IsMaximized() const;
+		bool m_Fullscreen = false;
+		
 		std::shared_ptr<Image> GetApplicationIcon() const { return m_AppHeaderIcon; }
 
 		float GetTime();

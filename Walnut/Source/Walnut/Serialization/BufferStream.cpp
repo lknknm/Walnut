@@ -12,7 +12,7 @@ namespace Walnut
 	bool BufferStreamWriter::WriteData(const char* data, size_t size)
 	{
 		bool valid = m_BufferPosition + size <= m_TargetBuffer.Size;
-		WL_CORE_VERIFY(valid);
+		//WL_CORE_VERIFY(valid)
 		if (!valid)
 			return false;
 
@@ -31,7 +31,7 @@ namespace Walnut
 	bool BufferStreamReader::ReadData(char* destination, size_t size)
 	{
 		bool valid = m_BufferPosition + size <= m_TargetBuffer.Size;
-		WL_CORE_VERIFY(valid);
+		//WL_CORE_VERIFY(valid)
 		if (!valid)
 			return false;
 
