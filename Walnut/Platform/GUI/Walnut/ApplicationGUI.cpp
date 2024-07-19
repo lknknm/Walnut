@@ -562,10 +562,10 @@ namespace Walnut {
 		// Load default font
 		ImFontConfig fontConfig;
 		fontConfig.FontDataOwnedByAtlas = false;
-		ImFont* robotoFont = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoRegular, sizeof(g_RobotoRegular), 20.0f, &fontConfig);
+		ImFont* robotoFont = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoRegular, sizeof(g_RobotoRegular), 16.0f, &fontConfig);
 		s_Fonts["Default"] = robotoFont;
-		s_Fonts["Bold"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoBold, sizeof(g_RobotoBold), 20.0f, &fontConfig);
-		s_Fonts["Italic"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoItalic, sizeof(g_RobotoItalic), 20.0f, &fontConfig);
+		s_Fonts["Bold"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoBold, sizeof(g_RobotoBold), 16.0f, &fontConfig);
+		s_Fonts["Italic"] = io.Fonts->AddFontFromMemoryTTF((void*)g_RobotoItalic, sizeof(g_RobotoItalic), 16.0f, &fontConfig);
 		io.FontDefault = robotoFont;
 
 		// Upload Fonts
@@ -677,7 +677,7 @@ namespace Walnut {
 
 	void Application::UI_DrawTitlebar(float& outTitlebarHeight)
 	{
-		const float titlebarHeight = 58.0f;
+		const float titlebarHeight = 30.0f;
 		const bool isMaximized = IsMaximized();
 		float titlebarVerticalOffset = isMaximized ? -6.0f : 0.0f;
 		const ImVec2 windowPadding = ImGui::GetCurrentWindow()->WindowPadding;
@@ -690,13 +690,13 @@ namespace Walnut {
 		auto* fgDrawList = ImGui::GetForegroundDrawList();
 		bgDrawList->AddRectFilled(titlebarMin, titlebarMax, UI::Colors::Theme::titlebar);
 		// DEBUG TITLEBAR BOUNDS
-		// fgDrawList->AddRect(titlebarMin, titlebarMax, UI::Colors::Theme::invalidPrefab);
+		//fgDrawList->AddRect(titlebarMin, titlebarMax, UI::Colors::Theme::invalidPrefab);
 
 		// Logo
 		{
-			const int logoWidth = 48;// m_LogoTex->GetWidth();
-			const int logoHeight = 48;// m_LogoTex->GetHeight();
-			const ImVec2 logoOffset(16.0f + windowPadding.x, 5.0f + windowPadding.y + titlebarVerticalOffset);
+			const int logoWidth = 16;// m_LogoTex->GetWidth();
+			const int logoHeight = 7;// m_LogoTex->GetHeight();
+			const ImVec2 logoOffset(16.0f + windowPadding.x, 12.0f + windowPadding.y + titlebarVerticalOffset);
 			const ImVec2 logoRectStart = { ImGui::GetItemRectMin().x + logoOffset.x, ImGui::GetItemRectMin().y + logoOffset.y };
 			const ImVec2 logoRectMax = { logoRectStart.x + logoWidth, logoRectStart.y + logoHeight };
 			fgDrawList->AddImage(m_AppHeaderIcon->GetDescriptorSet(), logoRectStart, logoRectMax);
@@ -731,10 +731,9 @@ namespace Walnut {
 			ImGui::SuspendLayout();
 			{
 				ImGui::SetItemAllowOverlap();
-				const float logoHorizontalOffset = 16.0f * 2.0f + 48.0f + windowPadding.x;
-				ImGui::SetCursorPos(ImVec2(logoHorizontalOffset, 6.0f + titlebarVerticalOffset));
+				const float logoHorizontalOffset = 8.0f + 48.0f + windowPadding.x;
+				ImGui::SetCursorPos(ImVec2(logoHorizontalOffset, 4.0f + titlebarVerticalOffset));
 				UI_DrawMenubar();
-
 				if (ImGui::IsItemHovered())
 					m_TitleBarHovered = false;
 			}
@@ -755,13 +754,13 @@ namespace Walnut {
 		const ImU32 buttonColN = UI::Colors::ColorWithMultipliedValue(UI::Colors::Theme::text, 0.9f);
 		const ImU32 buttonColH = UI::Colors::ColorWithMultipliedValue(UI::Colors::Theme::text, 1.2f);
 		const ImU32 buttonColP = UI::Colors::Theme::textDarker;
-		const float buttonWidth = 14.0f;
-		const float buttonHeight = 14.0f;
+		const float buttonWidth = 12.0f;
+		const float buttonHeight = 12.0f;
 
 		// Minimize Button
 
 		ImGui::Spring();
-		UI::ShiftCursorY(8.0f);
+		UI::ShiftCursorY(6.0f);
 		{
 			const int iconWidth = m_IconMinimize->GetWidth();
 			const int iconHeight = m_IconMinimize->GetHeight();
@@ -781,7 +780,7 @@ namespace Walnut {
 
 		// Maximize Button
 		ImGui::Spring(-1.0f, 17.0f);
-		UI::ShiftCursorY(8.0f);
+		UI::ShiftCursorY(6.0f);
 		{
 			const int iconWidth = m_IconMaximize->GetWidth();
 			const int iconHeight = m_IconMaximize->GetHeight();
@@ -804,7 +803,7 @@ namespace Walnut {
 
 		// Close Button
 		ImGui::Spring(-1.0f, 15.0f);
-		UI::ShiftCursorY(8.0f);
+		UI::ShiftCursorY(6.0f);
 		{
 			const int iconWidth = m_IconClose->GetWidth();
 			const int iconHeight = m_IconClose->GetHeight();
